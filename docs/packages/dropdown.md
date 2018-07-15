@@ -1,5 +1,5 @@
-# packages/dropdown
-#element/源码
+# dropdown
+
 
 `dropdown`分为了三个部分（文件）：`dropdown`, `dropdown-menu`, `dropdown-item`，其中`dropdown-item`是非常独立的组件
 
@@ -34,6 +34,8 @@ let triggerElm = !splitButton
 
 
 > 设置split-button属性来让触发下拉元素呈现为按钮组，左边是功能按钮，右边是触发下拉菜单的按钮，设置为true即可。 https://jsfiddle.net/api/post/library/pure/  
+
+
 如果 splitButton 为 true，则渲染冒号后面那一大坨，如果为 false，则正常渲染`this.$slots.default` 的内容就行了。而冒号后面那一大坨是引入了 `ElButton`和`ElButtonGroup`，在主 button上绑定了一个原生的点击事件`nativeOn-click={handleMainButtonClick}`，在函数开头的地方定义了：
 
 ``` js

@@ -1,5 +1,5 @@
-# packages/alert
-#element/源码
+# alert
+
 
 第一个组件就从最简单的alert看起吧。
 首先每个package里面的组件文件夹中都有一个 `index.js`， 

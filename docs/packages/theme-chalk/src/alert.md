@@ -1,4 +1,4 @@
-# packages/theme-chalk/src/alert.scss
+# alert.scss
 #element/源码
 
 分析完 alert 的html 和 js， 该了解一下scss 在 element 里是怎样应用的了。
@@ -8,7 +8,7 @@
 ``` scss
 @import "mixins/mixins";
 @import "common/var";
-``` 
+```
 
 后面的代码如下：
 ``` scss

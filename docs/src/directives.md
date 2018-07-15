@@ -1,5 +1,5 @@
-# src/directives
-#element/源码
+# directives
+
 
 ## `mousewheel.js`
 引用了第三方npm包 `normalize-wheel` [normalize-wheel  -  npm](https://www.npmjs.com/package/normalize-wheel)

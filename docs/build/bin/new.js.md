@@ -1,7 +1,7 @@
-#  build/bin/new.js
-#element/源码
+#  new.js
 
-加入我要新建一个组件，可以执行 `make new` 命令，例如：
+
+假如我要新建一个组件，可以执行 `make new` 命令，例如：
 ``` 
 make new dropdown-multi
 ```

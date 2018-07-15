@@ -1,5 +1,5 @@
-# build/bin/build-entry.js
-#element/源码
+# build-entry.js
+
 
 这个文件是整个工程构建的核心，它的使用场景是在 `package.json` 中，执行 `build:file`时所需要的。
 
@@ -139,7 +139,7 @@ var template = render(MAIN_TEMPLATE, {
 fs.writeFileSync(OUTPUT_PATH, template);
 console.log('[build entry] DONE:', OUTPUT_PATH);
 ```
- 
+
 当构建完成，控制台会输出一句话：
 
 ``` 

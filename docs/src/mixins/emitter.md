@@ -1,5 +1,5 @@
-#  src/mixins/emitter.js
-#element/源码
+#  emitter.js
+
 
 这个文件是 `broadcast` 和 `dispatch` 两个函数
 

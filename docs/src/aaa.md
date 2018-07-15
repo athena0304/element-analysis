@@ -1,5 +1,4 @@
-# src/index.js
-#element/源码
+# index.js
 
 这个文件的开头写到
 ``` javascript

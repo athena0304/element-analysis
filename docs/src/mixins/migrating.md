@@ -1,5 +1,5 @@
-# src/mixins/migrating.js
-#element/源码
+# migrating.js
+
 
 > 版本迭代的过程中，若 API 发生变化，如何友好地提示用户  
 

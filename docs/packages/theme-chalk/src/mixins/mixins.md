@@ -1,5 +1,5 @@
-#  packages/theme-chalk/src/mixins
-#element/源码
+#  mixins
+
 
 ## `config.scss`
 这个文件是源头，定义了一些命名空间等原始的值：
@@ -14,6 +14,7 @@ $state-prefix: 'is-'; // 状态前缀
 ## `function.scss`
 
 ## `mixin.scss`
+
 ###  `b`
 
 ``` scss
@@ -122,7 +123,7 @@ $currentSelector: #{&--success,};
 
 解析到这，有没有发现什么，mixin 对应的 b、e、m 对应的就是那个传说中的 BEM，我们解析了b和m，b就是为了加上block，m是为了加上后面的修饰符，e应该也就是为了添加元素，最终拼成BEM的格式。
 
-## e
+### e
 ``` scss
 @mixin e($element) {
   $E: $element !global;
