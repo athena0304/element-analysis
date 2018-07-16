@@ -7,6 +7,8 @@
 
 但是为什么element 还要用这两个类似的功能呢，我们继续往下看吧。
 
+这里推荐一篇文章，是和Vue 1.0 的源码做对比的，可以一并看一下：https://www.cnblogs.com/xxcanghai/p/6382607.html
+
 ## broadcast
 ```
 function broadcast(componentName, eventName, params) {
@@ -21,3 +23,6 @@ function broadcast(componentName, eventName, params) {
   });
 }
 ```
+这里要传入三个参数：`componentName` 组件名称，`eventName` 事件名称，`params` 参数
+
+遍历所有的子组件，如果找到名字相同的，就会在这个组件身上触发$emit，事件名称是`eventName`，如果子组件中没有找到，则递归遍历更深层次的组件寻找。

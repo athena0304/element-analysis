@@ -5,7 +5,6 @@ module.exports = {
   repo: 'https://github.com/athena0304/element-analysis', // 添加 github 链接
   themeConfig: {
     nav: [
-      { text: '总览', link: '/' },
       { text: '组件', link: '/packages/' },
       { text: 'src', link: '/src/' },
       { text: '工程化', link: '/build/' }

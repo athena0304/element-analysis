@@ -21,3 +21,5 @@ footer: MIT Licensed | Copyright © 2018-present athena0304
 | Vue        | 2.5.16 |
 | Webpack    | 3.12.0 |
 | element-ui | 2.4.3  |
+
+![An image](../assets/element.svg)
