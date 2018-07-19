@@ -185,6 +185,158 @@ initAria() {
 
 这里初始化了一些元素的aria相关的东西，具体可以看张鑫旭的这篇文章：[WAI-ARIA无障碍网页应用属性完全展示 «  张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2012/03/wai-aria-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%98%85%E8%AF%BB/)
 
+这里还引用了一个自定义指令 `Clickoutside`，在最外层div引用，如果点击外面，下拉菜单就会隐藏
+
+```jsx
+<div class="el-dropdown" v-clickoutside={hide}>
+    {triggerElm}
+    {this.$slots.dropdown}
+</div>
+```
+
+```js
+hide() {
+    if (this.triggerElm.disabled) return;
+    this.removeTabindex();
+    this.resetTabindex(this.triggerElm);
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+        this.visible = false;
+    }, this.trigger === 'click' ? 0 : this.hideTimeout);
+},
+```
+
+--------
+
+20180719 更新：
+
+笔者今天突发奇想，这个文件当时的提交情况到底是什么样的呢，于是在 vscode 上装了一个 `GitLens` 的插件，这样就可以清晰地看到每个文件的历史演进过程。
+
+我们可以看到 dropdown 最开始的样子：
+
+```vue
+<template>
+  <div class="el-dropdown"
+    :class="{'el-dropdown--text': type === 'text'}"
+    v-clickoutside="hide()"
+  >
+    <!-- 带独立的下拉菜单按钮 -->
+    <el-button-group v-if="iconSeparate">
+      <el-button :size="size" :type="type" @click="$emit('mainclick')">{{text}}</el-button>
+      <el-button
+        :size="size"
+        :type="type"
+        class="el-dropdown__icon-button"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        @click="handleClick">
+        <i class="el-dropdown__icon el-icon-caret-bottom"></i>
+      </el-button>
+    </el-button-group>
+    <!-- 不带独立的下拉菜单按钮 -->
+    <el-button :size="size" :type="type" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="handleClick" v-else>
+      {{text}}<i class="el-dropdown__icon el-icon-caret-bottom"></i>
+    </el-button>
+    <!-- 下拉菜单 -->
+    <el-dropdown-menu
+      v-ref:menu
+      v-if="visible"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+    >
+      <slot></slot>
+    </el-dropdown-menu>
+  </div>
+</template>
+<script>
+  /**
+   * dropdown
+   * @module packages/dropdown
+   * @desc 下拉菜单组件
+   * @param {string} label - 名称
+   */
+  import ElButton from 'packages/button/index.js';
+  import ElButtonGroup from 'packages/button-group/index.js';
+  import ElDropdownMenu from './dropdown-menu.vue';
+  import Vue from 'vue';
+  import VueClickoutside from 'vue-clickoutside';
+  Vue.use(VueClickoutside);
+
+  export default {
+    name: 'ElDropdown',
+
+    components: {
+      ElButton,
+      ElButtonGroup,
+      ElDropdownMenu
+    },
+
+    props: {
+      text: String,
+      type: String,
+      iconSeparate: {
+        type: Boolean,
+        default: true
+      },
+      trigger: {
+        type: String,
+        default: 'hover'
+      },
+      size: {
+        type: String,
+        default: ''
+      },
+      menuAlign: {
+        type: String,
+        default: 'end'
+      }
+    },
+
+    data() {
+      return {
+        timeout: null,
+        visible: false
+      };
+    },
+
+    methods: {
+      show() {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          this.visible = true;
+        }, 250);
+      },
+      hide() {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          this.visible = false;
+        }, 150);
+      },
+      handleMouseEnter() {
+        if (this.trigger === 'hover') {
+          this.show();
+        }
+      },
+      handleMouseLeave() {
+        if (this.trigger === 'hover') {
+          this.hide();
+        }
+      },
+      handleClick() {
+        if (this.trigger === 'click') {
+          this.visible = !this.visible;
+        }
+      }
+    }
+  };
+</script>
+
+```
+
+可以看到这个样子就很像我们自己写的组件了，没有那么多复杂的判断条件和其它需要考虑的兼容性、可访问性的问题。可能以后如果真的看不懂某个文件了，就可以找它最原始的文件，这样思路会清晰一些。
+
+----------------------------------------
+
 这个模块大致都清楚了，让我们先看一下里面的 `dropdown-menu`
 
 ## dropdown-menu.vue

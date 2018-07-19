@@ -4,6 +4,7 @@ module.exports = {
   base: '/element-analysis/',// 设置站点根路径
   repo: 'https://github.com/athena0304/element-analysis', // 添加 github 链接
   themeConfig: {
+    repo: 'git@github.com:athena0304/element-analysis.git',
     nav: [
       { text: '组件', link: '/packages/' },
       { text: 'src', link: '/src/' },
