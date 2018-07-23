@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>alert.scss | Element源码分析</title>
+    <meta name="description" content="一行代码都不要放过">
+    
+    
+    <link rel="preload" href="/element-analysis/assets/css/0.styles.980fed4e.css" as="style"><link rel="preload" href="/element-analysis/assets/js/app.f03fb7a1.js" as="script"><link rel="preload" href="/element-analysis/assets/js/18.83e33a7f.js" as="script"><link rel="prefetch" href="/element-analysis/assets/js/11.29975dd1.js"><link rel="prefetch" href="/element-analysis/assets/js/2.9559f1fe.js"><link rel="prefetch" href="/element-analysis/assets/js/3.a20d6377.js"><link rel="prefetch" href="/element-analysis/assets/js/4.fb2a6c84.js"><link rel="prefetch" href="/element-analysis/assets/js/5.9247e200.js"><link rel="prefetch" href="/element-analysis/assets/js/6.d4bd5f91.js"><link rel="prefetch" href="/element-analysis/assets/js/7.eeaec336.js"><link rel="prefetch" href="/element-analysis/assets/js/8.1e8c34e1.js"><link rel="prefetch" href="/element-analysis/assets/js/9.12e68d95.js"><link rel="prefetch" href="/element-analysis/assets/js/10.ee77c5f0.js"><link rel="prefetch" href="/element-analysis/assets/js/12.fb7ec0b2.js"><link rel="prefetch" href="/element-analysis/assets/js/13.f74794bf.js"><link rel="prefetch" href="/element-analysis/assets/js/14.6eba2fb4.js"><link rel="prefetch" href="/element-analysis/assets/js/15.57d1191b.js"><link rel="prefetch" href="/element-analysis/assets/js/16.10c2b7c4.js"><link rel="prefetch" href="/element-analysis/assets/js/17.e086befd.js"><link rel="prefetch" href="/element-analysis/assets/js/19.b7b6fe25.js"><link rel="prefetch" href="/element-analysis/assets/js/20.642347b6.js"><link rel="prefetch" href="/element-analysis/assets/js/21.56adc2aa.js"><link rel="prefetch" href="/element-analysis/assets/js/22.22e232cf.js"><link rel="prefetch" href="/element-analysis/assets/js/23.4dbc056b.js"><link rel="prefetch" href="/element-analysis/assets/js/24.0138a8ea.js"><link rel="prefetch" href="/element-analysis/assets/js/25.ba4f021f.js"><link rel="prefetch" href="/element-analysis/assets/js/26.36e86bf3.js">
+    <link rel="stylesheet" href="/element-analysis/assets/css/0.styles.980fed4e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/element-analysis/" class="home-link router-link-active"><!----><span class="site-name">
+      Element源码分析
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link router-link-active">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link router-link-active">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/element-analysis/packages/" class="sidebar-link">概览</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span>组件</span><!----></p><ul class="sidebar-group-items"><li><a href="/element-analysis/packages/alert.html" class="sidebar-link">alert</a></li><li><a href="/element-analysis/packages/dropdown.html" class="sidebar-link">dropdown</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>样式</span><!----></p><ul class="sidebar-group-items"><li><a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html" class="sidebar-link">mixins</a></li><li><a href="/element-analysis/packages/theme-chalk/src/alert.html" class="active sidebar-link">alert.scss</a></li><li><a href="/element-analysis/packages/theme-chalk/src/dropdown.html" class="sidebar-link">dropdown.scss</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="alert-scss"><a href="#alert-scss" aria-hidden="true" class="header-anchor">#</a> alert.scss</h1><p>#element/源码</p><p>分析完 alert 的html 和 js， 该了解一下scss 在 element 里是怎样应用的了。</p><p>首先，该文件 import 了两个文件：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;mixins/mixins&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;common/var&quot;</span><span class="token punctuation">;</span>
+</code></pre></div><p>后面的代码如下：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@include</span> <span class="token function">b</span><span class="token punctuation">(</span>alert<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token variable">$--alert-padding</span><span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token variable">$--alert-border-radius</span><span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--color-white</span><span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> opacity .2s<span class="token punctuation">;</span>
+
+  <span class="token keyword">@include</span> <span class="token function">when</span><span class="token punctuation">(</span>center<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">m</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-success-color</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">m</span><span class="token punctuation">(</span>info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-info-color</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-info</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-info</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">m</span><span class="token punctuation">(</span>warning<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-warning-color</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-warning</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-warning</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">m</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-danger-color</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-danger</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-danger</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">e</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0 8px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">e</span><span class="token punctuation">(</span>icon<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-size</span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-size</span><span class="token punctuation">;</span>
+    <span class="token keyword">@include</span> <span class="token function">when</span><span class="token punctuation">(</span>big<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-large-size</span><span class="token punctuation">;</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-large-size</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">e</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-title-font-size</span><span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 18px<span class="token punctuation">;</span>
+    <span class="token keyword">@include</span> <span class="token function">when</span><span class="token punctuation">(</span>bold<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span> .el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-description-font-size</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 5px 0 0 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@include</span> <span class="token function">e</span><span class="token punctuation">(</span>closebtn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-close-font-size</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-text-placeholder</span><span class="token punctuation">;</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+
+    <span class="token keyword">@include</span> <span class="token function">when</span><span class="token punctuation">(</span>customed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-close-customed-font-size</span><span class="token punctuation">;</span>
+      <span class="token property">top</span><span class="token punctuation">:</span> 9px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert-fade-enter,
+.el-alert-fade-leave-active </span><span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果把这段代码人肉一点点解析出来，解析成普通的scss，就是下面的：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.el-alert </span><span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 8px 16px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> opacity .2s<span class="token punctuation">;</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span>.is-center</span><span class="token punctuation">{</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span> .el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-description-font-size</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 5px 0 0 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert--success </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-success-color</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+
+  <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert-info </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-info-color</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-info</span><span class="token punctuation">;</span>
+
+  <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-info</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert--warning </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-warning-color</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-warning</span><span class="token punctuation">;</span>
+
+  <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-warning</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert--error </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-danger-color</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-danger</span><span class="token punctuation">;</span>
+
+  <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-danger</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert__content </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 8px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert__icon </span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-size</span><span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-size</span><span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>.is-big </span><span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-large-size</span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$--alert-icon-large-size</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert__title </span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-title-font-size</span><span class="token punctuation">;</span>
+  <span class="token property">line-height</span><span class="token punctuation">:</span> 18px<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>.is-bold </span><span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert__closebtn </span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-close-font-size</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-text-placeholder</span><span class="token punctuation">;</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+  <span class="token property">right</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span>.is-customed </span><span class="token punctuation">{</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$--alert-close-customed-font-size</span><span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 9px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert-fade-enter,
+.el-alert-fade-leave-active </span><span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html" class="prev">
+          mixins
+        </a></span><span class="next"><a href="/element-analysis/packages/theme-chalk/src/dropdown.html">
+          dropdown.scss
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/element-analysis/assets/js/18.83e33a7f.js" defer></script><script src="/element-analysis/assets/js/app.f03fb7a1.js" defer></script>
+  </body>
+</html>

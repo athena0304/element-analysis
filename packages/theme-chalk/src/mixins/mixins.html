@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>mixins | Element源码分析</title>
+    <meta name="description" content="一行代码都不要放过">
+    
+    
+    <link rel="preload" href="/element-analysis/assets/css/0.styles.980fed4e.css" as="style"><link rel="preload" href="/element-analysis/assets/js/app.f03fb7a1.js" as="script"><link rel="preload" href="/element-analysis/assets/js/20.642347b6.js" as="script"><link rel="prefetch" href="/element-analysis/assets/js/11.29975dd1.js"><link rel="prefetch" href="/element-analysis/assets/js/2.9559f1fe.js"><link rel="prefetch" href="/element-analysis/assets/js/3.a20d6377.js"><link rel="prefetch" href="/element-analysis/assets/js/4.fb2a6c84.js"><link rel="prefetch" href="/element-analysis/assets/js/5.9247e200.js"><link rel="prefetch" href="/element-analysis/assets/js/6.d4bd5f91.js"><link rel="prefetch" href="/element-analysis/assets/js/7.eeaec336.js"><link rel="prefetch" href="/element-analysis/assets/js/8.1e8c34e1.js"><link rel="prefetch" href="/element-analysis/assets/js/9.12e68d95.js"><link rel="prefetch" href="/element-analysis/assets/js/10.ee77c5f0.js"><link rel="prefetch" href="/element-analysis/assets/js/12.fb7ec0b2.js"><link rel="prefetch" href="/element-analysis/assets/js/13.f74794bf.js"><link rel="prefetch" href="/element-analysis/assets/js/14.6eba2fb4.js"><link rel="prefetch" href="/element-analysis/assets/js/15.57d1191b.js"><link rel="prefetch" href="/element-analysis/assets/js/16.10c2b7c4.js"><link rel="prefetch" href="/element-analysis/assets/js/17.e086befd.js"><link rel="prefetch" href="/element-analysis/assets/js/18.83e33a7f.js"><link rel="prefetch" href="/element-analysis/assets/js/19.b7b6fe25.js"><link rel="prefetch" href="/element-analysis/assets/js/21.56adc2aa.js"><link rel="prefetch" href="/element-analysis/assets/js/22.22e232cf.js"><link rel="prefetch" href="/element-analysis/assets/js/23.4dbc056b.js"><link rel="prefetch" href="/element-analysis/assets/js/24.0138a8ea.js"><link rel="prefetch" href="/element-analysis/assets/js/25.ba4f021f.js"><link rel="prefetch" href="/element-analysis/assets/js/26.36e86bf3.js">
+    <link rel="stylesheet" href="/element-analysis/assets/css/0.styles.980fed4e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/element-analysis/" class="home-link router-link-active"><!----><span class="site-name">
+      Element源码分析
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link router-link-active">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link router-link-active">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/element-analysis/packages/" class="sidebar-link">概览</a></li><li><div class="sidebar-group"><p class="sidebar-heading"><span>组件</span><!----></p><ul class="sidebar-group-items"><li><a href="/element-analysis/packages/alert.html" class="sidebar-link">alert</a></li><li><a href="/element-analysis/packages/dropdown.html" class="sidebar-link">dropdown</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>样式</span><!----></p><ul class="sidebar-group-items"><li><a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html" class="active sidebar-link">mixins</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html#config-scss" class="sidebar-link">config.scss</a></li><li class="sidebar-sub-header"><a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html#function-scss" class="sidebar-link">function.scss</a></li><li class="sidebar-sub-header"><a href="/element-analysis/packages/theme-chalk/src/mixins/mixins.html#mixin-scss" class="sidebar-link">mixin.scss</a></li></ul></li><li><a href="/element-analysis/packages/theme-chalk/src/alert.html" class="sidebar-link">alert.scss</a></li><li><a href="/element-analysis/packages/theme-chalk/src/dropdown.html" class="sidebar-link">dropdown.scss</a></li></ul></div></li></ul></div><div class="page"><div class="content"><h1 id="mixins"><a href="#mixins" aria-hidden="true" class="header-anchor">#</a> mixins</h1><h2 id="config-scss"><a href="#config-scss" aria-hidden="true" class="header-anchor">#</a><code>config.scss</code></h2><p>这个文件是源头，定义了一些命名空间等原始的值：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token property"><span class="token variable">$namespace</span></span><span class="token punctuation">:</span> <span class="token string">'el'</span><span class="token punctuation">;</span> <span class="token comment">// 命名空间</span>
+<span class="token property"><span class="token variable">$element-separator</span></span><span class="token punctuation">:</span> <span class="token string">'__'</span><span class="token punctuation">;</span> <span class="token comment">// 元素之间的分隔符</span>
+<span class="token property"><span class="token variable">$modifier-separator</span></span><span class="token punctuation">:</span> <span class="token string">'--'</span><span class="token punctuation">;</span> <span class="token comment">// 修饰符分隔符</span>
+<span class="token property"><span class="token variable">$state-prefix</span></span><span class="token punctuation">:</span> <span class="token string">'is-'</span><span class="token punctuation">;</span> <span class="token comment">// 状态前缀</span>
+</code></pre></div><h2 id="function-scss"><a href="#function-scss" aria-hidden="true" class="header-anchor">#</a><code>function.scss</code></h2><h2 id="mixin-scss"><a href="#mixin-scss" aria-hidden="true" class="header-anchor">#</a><code>mixin.scss</code></h2><h3 id="b"><a href="#b" aria-hidden="true" class="header-anchor">#</a><code>b</code></h3><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token variable">$block</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property"><span class="token variable">$B</span></span><span class="token punctuation">:</span> <span class="token variable">$namespace</span>+<span class="token string">'-'</span>+<span class="token variable">$block</span> !global<span class="token punctuation">;</span>
+
+  <span class="token selector">.<span class="token variable">#{$B}</span> </span><span class="token punctuation">{</span>
+    <span class="token keyword">@content</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>将局部变量转换为全局变量可以添加 <code>!global</code> 声明</p><p>如果传入的 $block 是 alert，那么解析后就是：</p><div class="language- extra-class"><pre class="language-text"><code>@mixin b($block) {
+  .el-alert {
+    @content;
+  }
+}
+</code></pre></div><p>也就是说b的作用就是把传进来的组件名拼接成 el命名空间的选择符。
+<code>#{$B}</code> 是一种插值写法，最终解析出来的就是<code>el-alert</code></p><h3 id="when"><a href="#when" aria-hidden="true" class="header-anchor">#</a><code>when</code></h3><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">when</span><span class="token punctuation">(</span><span class="token variable">$state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@at-root</span></span> <span class="token punctuation">{</span>
+    &amp;.#<span class="token punctuation">{</span><span class="token variable">$state-prefix</span> <span class="token operator">+</span> <span class="token variable">$state</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+      <span class="token keyword">@content</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这里是 @at-root 官网<a href="https://sass-lang.com/documentation/file.SASS_REFERENCE.html#at-root" target="_blank" rel="noopener noreferrer">File: SASS_REFERENCE — Documentation by YARD 0.9.12<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 的解释，<code>@at-root</code> 指令可以将一条或者多条规则注册在文档的根目录，而不用限制在父选择器内。</p><p>那么这段翻译过来就是：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector"><span class="token parent important">&amp;</span>.is-center </span><span class="token punctuation">{</span>
+      <span class="token keyword">@content</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token comment">/* 以 alert 举例：*/</span>
+<span class="token keyword">@include</span> <span class="token function">when</span><span class="token punctuation">(</span>center<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token comment">/* 最终：*/</span>
+<span class="token selector">.el-alert.is-center </span><span class="token punctuation">{</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>所以总结一下，这个 <code>when</code>  的 <code>mixin</code> 就是给传入的类名字段加一个 <code>is-</code>前缀</p><h3 id="m"><a href="#m" aria-hidden="true" class="header-anchor">#</a><code>m</code></h3><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">m</span><span class="token punctuation">(</span><span class="token variable">$modifier</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property"><span class="token variable">$selector</span></span><span class="token punctuation">:</span> &amp;<span class="token punctuation">;</span>
+  <span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$unit</span> in <span class="token variable">$modifier</span> </span><span class="token punctuation">{</span>
+    <span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span><span class="token variable">$currentSelector</span> <span class="token operator">+</span> &amp; <span class="token operator">+</span> <span class="token variable">$modifier-separator</span> <span class="token operator">+</span> <span class="token variable">$unit</span> <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@at-root</span></span> <span class="token punctuation">{</span>
+    <span class="token selector"><span class="token variable">#{$currentSelector}</span> </span><span class="token punctuation">{</span>
+      <span class="token keyword">@content</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这里用到了 @each 指令 <a href="https://sass-lang.com/documentation/file.SASS_REFERENCE.html#each-directive" target="_blank" rel="noopener noreferrer">File: SASS_REFERENCE — Documentation by YARD 0.9.12<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，解析过后就是</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span><span class="token variable">$currentSelector</span> <span class="token operator">+</span> &amp; <span class="token operator">+</span> <span class="token variable">$modifier-separator</span> <span class="token operator">+</span> <span class="token variable">$unit</span> <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span>&amp;--success,<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@include</span> <span class="token function">m</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$--alert-success-color</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+
+    <span class="token selector">.el-alert__description </span><span class="token punctuation">{</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$--color-success</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert--success </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f0f9eb<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.el-alert--success .el-alert__description </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>所以这个 m 对应的就是加修饰符的操作</p><p>解析到这，有没有发现什么，mixin 对应的 b、e、m 对应的就是那个传说中的 BEM，我们解析了b和m，b就是为了加上block，m是为了加上后面的修饰符，e应该也就是为了添加元素，最终拼成BEM的格式。</p><h3 id="e"><a href="#e" aria-hidden="true" class="header-anchor">#</a> e</h3><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">e</span><span class="token punctuation">(</span><span class="token variable">$element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property"><span class="token variable">$E</span></span><span class="token punctuation">:</span> <span class="token variable">$element</span> !global<span class="token punctuation">;</span>
+  <span class="token property"><span class="token variable">$selector</span></span><span class="token punctuation">:</span> &amp;<span class="token punctuation">;</span>
+  <span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$unit</span> in <span class="token variable">$element</span> </span><span class="token punctuation">{</span>
+    <span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span><span class="token variable">$currentSelector</span> <span class="token operator">+</span> <span class="token string">&quot;.&quot;</span> <span class="token operator">+</span> <span class="token variable">$B</span> <span class="token operator">+</span> <span class="token variable">$element-separator</span> <span class="token operator">+</span> <span class="token variable">$unit</span> <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@if</span> <span class="token function">hitAllSpecialNestRule</span><span class="token punctuation">(</span><span class="token variable">$selector</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token atrule"><span class="token rule">@at-root</span></span> <span class="token punctuation">{</span>
+      <span class="token selector"><span class="token variable">#{$selector}</span> </span><span class="token punctuation">{</span>
+        <span class="token selector"><span class="token variable">#{$currentSelector}</span> </span><span class="token punctuation">{</span>
+          <span class="token keyword">@content</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">@else</span> <span class="token punctuation">{</span>
+    <span class="token atrule"><span class="token rule">@at-root</span></span> <span class="token punctuation">{</span>
+      <span class="token selector"><span class="token variable">#{$currentSelector}</span> </span><span class="token punctuation">{</span>
+        <span class="token keyword">@content</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>前半段解析为：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span><span class="token variable">$currentSelector</span> <span class="token operator">+</span> <span class="token string">&quot;.&quot;</span> <span class="token operator">+</span> <span class="token variable">$B</span> <span class="token operator">+</span> <span class="token variable">$element-separator</span> <span class="token operator">+</span> <span class="token variable">$unit</span> <span class="token operator">+</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$currentSelector</span></span><span class="token punctuation">:</span> #<span class="token punctuation">{</span>.el-alert__content,<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>后面几句用到了 <code>@function</code> 指令 <a href="https://sass-lang.com/documentation/file.SASS_REFERENCE.html#function_directives" target="_blank" rel="noopener noreferrer">File: SASS_REFERENCE — Documentation by YARD 0.9.12<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，意思是说如果有 containsModifier、containWhenFlag、containPseudoClass，就在外层再加一个 <code>#{$selector}</code></p><p>举例：</p><div class="language-scss extra-class"><pre class="language-scss"><code><span class="token keyword">@include</span> <span class="token function">e</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0 8px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token selector">.el-alert__content </span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0 8px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/element-analysis/packages/dropdown.html" class="prev">
+          dropdown
+        </a></span><span class="next"><a href="/element-analysis/packages/theme-chalk/src/alert.html">
+          alert.scss
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/element-analysis/assets/js/20.642347b6.js" defer></script><script src="/element-analysis/assets/js/app.f03fb7a1.js" defer></script>
+  </body>
+</html>

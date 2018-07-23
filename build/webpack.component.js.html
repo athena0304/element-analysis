@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack.component.js | Element源码分析</title>
+    <meta name="description" content="一行代码都不要放过">
+    
+    
+    <link rel="preload" href="/element-analysis/assets/css/0.styles.980fed4e.css" as="style"><link rel="preload" href="/element-analysis/assets/js/app.f03fb7a1.js" as="script"><link rel="preload" href="/element-analysis/assets/js/8.1e8c34e1.js" as="script"><link rel="prefetch" href="/element-analysis/assets/js/11.29975dd1.js"><link rel="prefetch" href="/element-analysis/assets/js/2.9559f1fe.js"><link rel="prefetch" href="/element-analysis/assets/js/3.a20d6377.js"><link rel="prefetch" href="/element-analysis/assets/js/4.fb2a6c84.js"><link rel="prefetch" href="/element-analysis/assets/js/5.9247e200.js"><link rel="prefetch" href="/element-analysis/assets/js/6.d4bd5f91.js"><link rel="prefetch" href="/element-analysis/assets/js/7.eeaec336.js"><link rel="prefetch" href="/element-analysis/assets/js/9.12e68d95.js"><link rel="prefetch" href="/element-analysis/assets/js/10.ee77c5f0.js"><link rel="prefetch" href="/element-analysis/assets/js/12.fb7ec0b2.js"><link rel="prefetch" href="/element-analysis/assets/js/13.f74794bf.js"><link rel="prefetch" href="/element-analysis/assets/js/14.6eba2fb4.js"><link rel="prefetch" href="/element-analysis/assets/js/15.57d1191b.js"><link rel="prefetch" href="/element-analysis/assets/js/16.10c2b7c4.js"><link rel="prefetch" href="/element-analysis/assets/js/17.e086befd.js"><link rel="prefetch" href="/element-analysis/assets/js/18.83e33a7f.js"><link rel="prefetch" href="/element-analysis/assets/js/19.b7b6fe25.js"><link rel="prefetch" href="/element-analysis/assets/js/20.642347b6.js"><link rel="prefetch" href="/element-analysis/assets/js/21.56adc2aa.js"><link rel="prefetch" href="/element-analysis/assets/js/22.22e232cf.js"><link rel="prefetch" href="/element-analysis/assets/js/23.4dbc056b.js"><link rel="prefetch" href="/element-analysis/assets/js/24.0138a8ea.js"><link rel="prefetch" href="/element-analysis/assets/js/25.ba4f021f.js"><link rel="prefetch" href="/element-analysis/assets/js/26.36e86bf3.js">
+    <link rel="stylesheet" href="/element-analysis/assets/css/0.styles.980fed4e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/element-analysis/" class="home-link router-link-active"><!----><span class="site-name">
+      Element源码分析
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link router-link-active">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/element-analysis/packages/" class="nav-link">组件</a></div><div class="nav-item"><a href="/element-analysis/src/" class="nav-link">src</a></div><div class="nav-item"><a href="/element-analysis/build/" class="nav-link router-link-active">工程化</a></div><a href="https://github.com/athena0304/element-analysis" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav><ul class="sidebar-links"><li><a href="/element-analysis/build/" class="sidebar-link">构建</a></li><li><a href="/element-analysis/build/webpack.common.js.html" class="sidebar-link">webpack.common.js</a></li><li><a href="/element-analysis/build/webpack.component.js.html" class="active sidebar-link">webpack.component.js</a></li><li><a href="/element-analysis/build/webpack.conf.js.html" class="sidebar-link">webpack.conf.js</a></li><li><a href="/element-analysis/build/webpack.demo.js.html" class="sidebar-link">webpack.demo.js</a></li><li><a href="/element-analysis/build/webpack.test.js.html" class="sidebar-link">webpack.test.js</a></li><li><a href="/element-analysis/build/bin/build-entry.js.html" class="sidebar-link">build-entry.js</a></li><li><a href="/element-analysis/build/bin/new.js.html" class="sidebar-link">new.js</a></li></ul></div><div class="page"><div class="content"><h1 id="webpack-component-js"><a href="#webpack-component-js" aria-hidden="true" class="header-anchor">#</a> webpack.component.js</h1><p>这个文件是在 <code>npm run dist</code> 的时候用到的</p><div class="language- extra-class"><pre class="language-text"><code>&quot;dist&quot;: &quot;npm run clean &amp;&amp; npm run build:file &amp;&amp; npm run lint &amp;&amp; webpack --config build/webpack.conf.js &amp;&amp; webpack --config build/webpack.common.js &amp;&amp; webpack --config build/webpack.component.js &amp;&amp; npm run build:utils &amp;&amp; npm run build:umd &amp;&amp; npm run build:theme&quot;,
+</code></pre></div><p>目的是把components下面的组件文件都进行构建打包， 输入为 <code>./packages</code>  ，输出为 <code>./lib</code></p><p>里面的内容和 <code>webpack.common.js</code> 类似：</p><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> ProgressBarPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'progress-bar-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Components <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../components.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./config'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> webpackConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> Components<span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'./lib'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    publicPath<span class="token punctuation">:</span> <span class="token string">'/dist/'</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].js'</span><span class="token punctuation">,</span>
+    chunkFilename<span class="token punctuation">:</span> <span class="token string">'[id].js'</span><span class="token punctuation">,</span>
+    libraryTarget<span class="token punctuation">:</span> <span class="token string">'commonjs2'</span> <span class="token comment">// 入口起点的返回值将分配给 module.exports 对象。这个名称也意味着模块用于 CommonJS 环境</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.vue'</span><span class="token punctuation">,</span> <span class="token string">'.json'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    alias<span class="token punctuation">:</span> config<span class="token punctuation">.</span>alias<span class="token punctuation">,</span>
+    modules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'node_modules'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  externals<span class="token punctuation">:</span> config<span class="token punctuation">.</span>externals<span class="token punctuation">,</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.(jsx?|babel|es6)$/</span><span class="token punctuation">,</span>
+        include<span class="token punctuation">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        exclude<span class="token punctuation">:</span> config<span class="token punctuation">.</span>jsexclude<span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'babel-loader'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.vue$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'vue-loader'</span><span class="token punctuation">,</span>
+        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          preserveWhitespace<span class="token punctuation">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.json$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'json-loader'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token string">'postcss-loader'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.scss$/</span><span class="token punctuation">,</span>
+        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token string">'sass-loader'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.html$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'html-loader?minimize=false'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.otf|ttf|woff2?|eot(\?\S*)?$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
+        query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          limit<span class="token punctuation">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          name<span class="token punctuation">:</span> path<span class="token punctuation">.</span>posix<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">,</span> <span class="token string">'[name].[hash:7].[ext]'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.svg(\?\S*)?$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
+        query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          limit<span class="token punctuation">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          name<span class="token punctuation">:</span> path<span class="token punctuation">.</span>posix<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">,</span> <span class="token string">'[name].[hash:7].[ext]'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.(gif|png|jpe?g)(\?\S*)?$/</span><span class="token punctuation">,</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
+        query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          limit<span class="token punctuation">:</span> <span class="token number">10000</span><span class="token punctuation">,</span>
+          name<span class="token punctuation">:</span> path<span class="token punctuation">.</span>posix<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">,</span> <span class="token string">'[name].[hash:7].[ext]'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">ProgressBarPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token string">'process.env.NODE_ENV'</span><span class="token punctuation">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token string">'production'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>LoaderOptionsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      minimize<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> webpackConfig<span class="token punctuation">;</span>
+
+
+</code></pre></div></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/element-analysis/build/webpack.common.js.html" class="prev">
+          webpack.common.js
+        </a></span><span class="next"><a href="/element-analysis/build/webpack.conf.js.html">
+          webpack.conf.js
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/element-analysis/assets/js/8.1e8c34e1.js" defer></script><script src="/element-analysis/assets/js/app.f03fb7a1.js" defer></script>
+  </body>
+</html>
